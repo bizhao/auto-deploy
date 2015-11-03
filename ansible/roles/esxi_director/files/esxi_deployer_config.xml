@@ -8,7 +8,7 @@
       <parameterDefinitions>
         <hudson.model.ChoiceParameterDefinition>
           <name>esxi_build</name>
-          <description>6.0U1   3029758&lt;br&gt;
+          <description>6.0U1   3029758
 5.5U3   3029944</description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
@@ -19,7 +19,7 @@
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>target_hosts</name>
-          <description>a list of ILO IPs of target ESXi hosts. For example: 
+          <description>A list of ILO IPs of target ESXi hosts. For example:
 10.111.90.158 10.111.90.159</description>
           <defaultValue></defaultValue>
         </hudson.model.TextParameterDefinition>
@@ -42,8 +42,7 @@
     </hudson.model.ParametersDefinitionProperty>
   </properties>
   <scm class="hudson.scm.NullSCM"/>
-  <assignedNode>ESXi_autodeployer</assignedNode>
-  <canRoam>false</canRoam>
+  <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
