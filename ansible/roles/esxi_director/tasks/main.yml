@@ -1,37 +1,11 @@
 ---
-- name: get and add jenkins repo key
-  apt_key: url=https://jenkins-ci.org/debian/jenkins-ci.org.key state=present
 
-- name: add apt repo for jenkins
-  apt_repository: repo='deb http://pkg.jenkins-ci.org/debian binary/' state=present
+# Use following command to trigger this yaml
+# ansible-playbook sites.yml -i hosts -u vagrant
 
-- name: run apt-get update
-  apt: update_cache=yes
-  ignore_errors: yes
+- include: atp_install.yml
 
-- name: install apache2
-  apt: name=apache2 state=latest
+- name: setting tftp config file permissions
+  file: path=/etc/default/tftpd-hpa owner=jenkins group=jenkins
 
-- name: install tftpd-hpa
-  apt: name=tftpd-hpa state=latest
-
-- name: install jenkins
-  apt: name=jenkins state=latest
-
-- name: start jenkins
-  service: name=jenkins state=started
-
-- name: wait for jenkins to initialzation
-  pause: minutes=1
-
-- name: create jenkins job folder
-  file: path=/var/lib/jenkins/jobs/ESXi_Deployer/ state=directory owner=jenkins group=jenkins
-
-- name: copy jenkins job file
-  copy: src=esxi_deployer_config.xml dest=/var/lib/jenkins/jobs/ESXi_Deployer/config.xml owner=jenkins group=jenkins
-
-- name: copy jenkins execution file
-  copy: src=deploy.sh dest=/var/lib/jenkins/jobs/ESXi_Deployer/ owner=jenkins group=jenkins mode=0755
-
-- name: restart jenkins
-  service: name=jenkins state=restarted
+- include: jenkins.yml

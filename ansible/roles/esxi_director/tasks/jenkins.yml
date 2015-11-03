@@ -1,0 +1,13 @@
+---
+
+- name: create jenkins job folder
+  file: path=/var/lib/jenkins/jobs/ESXi_Deployer/ state=directory owner=jenkins group=jenkins
+
+- name: copy jenkins job file
+  copy: src=esxi_deployer_config.xml dest=/var/lib/jenkins/jobs/ESXi_Deployer/config.xml owner=jenkins group=jenkins
+
+- name: copy jenkins execution file
+  copy: src=deploy.sh dest=/var/lib/jenkins/jobs/ESXi_Deployer/ owner=jenkins group=jenkins mode=0755
+
+- name: restart jenkins
+  service: name=jenkins state=restarted

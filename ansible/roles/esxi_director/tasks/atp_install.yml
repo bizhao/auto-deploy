@@ -1,0 +1,29 @@
+---
+
+- name: get and add jenkins repo key
+  apt_key: url=https://jenkins-ci.org/debian/jenkins-ci.org.key state=present
+
+- name: add apt repo for jenkins
+  apt_repository: repo='deb http://pkg.jenkins-ci.org/debian binary/' state=present
+
+- name: run apt-get update
+  apt: update_cache=yes
+  ignore_errors: yes
+
+- name: install ipmitool
+  apt: name=ipmitool state=latest
+
+- name: install apache2
+  apt: name=apache2 state=latest
+
+- name: install tftpd-hpa
+  apt: name=tftpd-hpa state=latest
+
+- name: install jenkins
+  apt: name=jenkins state=latest
+
+- name: start jenkins
+  service: name=jenkins state=restarted enabled=yes
+
+- name: wait for jenkins to initialzation
+  pause: minutes=1
