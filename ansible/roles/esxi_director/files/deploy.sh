@@ -2,7 +2,7 @@
 
 SRC=/tmp/tftp_config
 echo TFTP_USERNAME="\"tftp\"" > $SRC
-echo TFTP_DIRECTORY="\"/www/build/esxi/${esxi_build}/extract\"" >> $SRC
+echo TFTP_DIRECTORY="\"/builds/esxi/${esxi_build}/extract\"" >> $SRC
 echo TFTP_ADDRESS="\"[::]:69\"" >> $SRC
 echo TFTP_OPTIONS="\"--secure --verbose\"" >> $SRC
 
