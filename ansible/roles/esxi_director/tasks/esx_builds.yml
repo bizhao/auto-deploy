@@ -6,16 +6,30 @@
 - name: create base directories to save esxi builds
   file: path=/builds/esxi/ state=directory  owner=jenkins group=jenkins
 
-- name: create dir for esxi 5.5 u3
-  file: path=/builds/esxi/3029944/ state=directory  owner=jenkins group=jenkins
-
 - name: copy extract_iso.sh
   copy: src=extract_iso.sh dest=/builds/esxi/ owner=jenkins group=jenkins mode=0755
 
-- name: copy esxi 5.5 u3 build
-  copy: src=ubuntu-14.04.1-server-amd64.iso dest=/builds/esxi/3029944/ force=no owner=jenkins group=jenkins mode=0644
+- name: create dir for esxi 5.5 u3
+  file: path=/builds/esxi/3029944/ state=directory  owner=jenkins group=jenkins
 
-- command: /builds/esxi/extract_iso.sh ubuntu-14.04.1-server-amd64.iso
+- name: copy esxi 5.5 u3 build
+  copy: src=VMware-VMvisor-Installer-5.5.0-3029944.x86_64.iso dest=/builds/esxi/3029944/ force=no owner=jenkins group=jenkins mode=0644
+
+- name: create dir for esxi 5.5 u3
+  file: path=/builds/esxi/3029944/ state=directory  owner=jenkins group=jenkins
+
+- command: /builds/esxi/extract_iso.sh VMware-VMvisor-Installer-5.5.0-3029944.x86_64.iso
   args:
     chdir: /builds/esxi/3029944/
+    creates: build.ready
+
+- name: create dir for esxi 6.0 u1
+  file: path=/builds/esxi/3029758/ state=directory  owner=jenkins group=jenkins
+
+- name: copy esxi 6.0 u1 build
+  copy: src=VMware-VMvisor-Installer-6.0.0-3029758.x86_64.iso dest=/builds/esxi/3029758/ force=no owner=jenkins group=jenkins mode=0644
+
+- command: /builds/esxi/extract_iso.sh VMware-VMvisor-Installer-6.0.0-3029758.x86_64.iso
+  args:
+    chdir: /builds/esxi/3029758/
     creates: build.ready

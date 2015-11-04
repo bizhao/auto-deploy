@@ -4,7 +4,7 @@
 
 rm -rf /tmp/mnt
 mkdir /tmp/mnt
-sudo mount –o loop $1 /tmp/mnt
+sudo mount -t iso9660 $1 /tmp/mnt
 
 mkdir extract
 cp -R /tmp/mnt/* extract/

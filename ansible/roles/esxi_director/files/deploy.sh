@@ -19,4 +19,3 @@ done
 
 echo "Wait 480 seconds to let the installation finishes."
 sleep 480
-
