@@ -51,7 +51,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>/var/lib/jenkins/jobs/ESXi_Deployer/deploy.sh</command>
+      <command>/builds/esxi/scripts/deploy.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
