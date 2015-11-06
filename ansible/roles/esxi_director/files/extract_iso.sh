@@ -2,15 +2,14 @@
 
 # Extract ESXi iso
 
-rm -rf /tmp/mnt
-mkdir /tmp/mnt
-sudo mount -t iso9660 $1 /tmp/mnt
+mkdir /tmp/iso_mount_point
+fuseiso $1 /tmp/iso_mount_point
 
 mkdir extract
-cp -R /tmp/mnt/* extract/
+cp -R /tmp/iso_mount_point/* extract/
 
 touch build.ready
-sudo umount /tmp/mnt
+fusermount -u /tmp/iso_mount_point
 
 # Create pxelinux.cfg folder and default file
 mkdir extract/pxelinux.cfg
@@ -32,3 +31,5 @@ LABEL hddboot
 LOCALBOOT 0x80
 MENU LABEL ^Boot from local disk
 " > default
+
+rm -rf /tmp/iso_mount_point

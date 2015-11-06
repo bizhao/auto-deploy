@@ -13,11 +13,20 @@
 - name: install ipmitool
   apt: name=ipmitool state=latest
 
+- name: install fuseiso
+  apt: name=fuseiso state=latest
+
+- name: let user jenkins can write:
+  file: path=/etc/fuse.conf mode=0666
+
 - name: install apache2
   apt: name=apache2 state=latest
 
 - name: install tftpd-hpa
   apt: name=tftpd-hpa state=latest
+
+- name: setting tftp config file permissions
+  file: path=/etc/default/tftpd-hpa owner=jenkins group=jenkins
 
 - name: install jenkins
   apt: name=jenkins state=latest
