@@ -16,7 +16,7 @@
 - name: install fuseiso
   apt: name=fuseiso state=latest
 
-- name: let user jenkins can write:
+- name: let user jenkins can write
   file: path=/etc/fuse.conf mode=0666
 
 - name: install apache2

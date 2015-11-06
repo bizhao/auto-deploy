@@ -1,11 +1,12 @@
 ---
 
 # Use following command to trigger this yaml
-# ansible-playbook sites.yml -i hosts -u vagrant
+# ansible-playbook sites.yml -i hosts -u [SSH_USER]
 
 - include: atp_install.yml
 
-- name: setting tftp config file permissions
-  file: path=/etc/default/tftpd-hpa owner=jenkins group=jenkins
-
 - include: jenkins.yml
+
+- include: esx_builds.yml
+
+- include: apache2.yml
