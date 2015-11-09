@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 SRC=/tmp/tftp_config
 echo TFTP_USERNAME="\"tftp\"" > $SRC
 echo TFTP_DIRECTORY="\"/builds/esxi/${esxi_build}/extract\"" >> $SRC
@@ -7,7 +7,7 @@ echo TFTP_ADDRESS="\"[::]:69\"" >> $SRC
 echo TFTP_OPTIONS="\"--secure --verbose\"" >> $SRC
 
 cp $SRC /etc/default/tftpd-hpa
-service tftpd-hpa restart
+sudo -S service tftpd-hpa restart
 
 for host in $target_hosts; do
     echo PXE-booting host $host
