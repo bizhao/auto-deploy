@@ -31,4 +31,4 @@ fi
 echo "Extracting iso."
 ../scripts/extract_iso.sh $build_filename
 
-# add build to Jenkins job
+#TODO: add build to Jenkins job

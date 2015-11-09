@@ -25,9 +25,6 @@
 - name: install tftpd-hpa
   apt: name=tftpd-hpa state=latest
 
-- name: setting tftp config file permissions
-  file: path=/etc/default/tftpd-hpa owner=jenkins group=jenkins
-
 - name: install jenkins
   apt: name=jenkins state=latest
 
