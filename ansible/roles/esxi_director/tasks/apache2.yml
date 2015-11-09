@@ -1,0 +1,4 @@
+---
+
+- name: make sure apache2 is always running
+  service: name=apache2 state=started enabled=yes
