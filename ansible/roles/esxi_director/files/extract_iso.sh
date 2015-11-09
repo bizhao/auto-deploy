@@ -11,6 +11,8 @@ cp -R /tmp/iso_mount_point/* extract/
 touch build.ready
 fusermount -u /tmp/iso_mount_point
 
+cp /builds/esxi/scripts/gpxelinux.0 extract/
+
 # Create pxelinux.cfg folder and default file
 mkdir extract/pxelinux.cfg
 cd extract/pxelinux.cfg

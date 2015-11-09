@@ -15,6 +15,8 @@
 - name: copy get_build.sh
   copy: src=get_build.sh dest=/builds/esxi/scripts owner=jenkins group=jenkins mode=0755
 
+- name: copy gpxelinux.0
+  copy: src=gpxelinux.0 dest=/builds/esxi/scripts owner=jenkins group=jenkins mode=0755
 
 - name: create dir for esxi 5.5 u3
   file: path=/builds/esxi/3029944/ state=directory  owner=jenkins group=jenkins
