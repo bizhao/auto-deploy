@@ -13,6 +13,10 @@ fusermount -u /tmp/iso_mount_point
 
 cp /builds/esxi/scripts/gpxelinux.0 extract/
 
+# Let jenkins user can edit boot.cfg
+chmod o+w extract/
+chmod o+w extract/boot.cfg
+
 # Create pxelinux.cfg folder and default file
 mkdir extract/pxelinux.cfg
 cd extract/pxelinux.cfg

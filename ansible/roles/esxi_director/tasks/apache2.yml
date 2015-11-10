@@ -2,3 +2,6 @@
 
 - name: make sure apache2 is always running
   service: name=apache2 state=started enabled=yes
+
+- name: save kickstart file
+  copy: src=ks.cfg dest=/var/www/html/ owner=root group=root mode=0644

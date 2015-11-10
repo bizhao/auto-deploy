@@ -6,6 +6,19 @@ echo TFTP_DIRECTORY="\"/builds/esxi/${esxi_build}/extract\"" >> $SRC
 echo TFTP_ADDRESS="\"[::]:69\"" >> $SRC
 echo TFTP_OPTIONS="\"--secure --verbose\"" >> $SRC
 
+
+# Set ip in boot.cfg
+bootcfg=/builds/esxi/${esxi_build}/extract/boot.cfg
+if [ -n "$server_ip" ]; then
+  ip_address=$server_ip
+else
+  ip_address=`ifconfig eth0|grep 'inet addr:' | cut -d: -f2 | awk '{print $1}'`
+fi
+newline=kernelopt=ks=http://${ip_address}/ks.cfg
+
+echo $newline
+sed -i "/tboot.b00/a ${newline}" ${bootcfg}
+
 cp $SRC /etc/default/tftpd-hpa
 sudo -S service tftpd-hpa restart
 
