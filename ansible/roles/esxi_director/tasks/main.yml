@@ -3,10 +3,12 @@
 # Use following command to trigger this yaml
 # ansible-playbook sites.yml -i hosts -u [SSH_USER] --ask-sudo-pass
 
-# - include: atp_install.yml
+- include: atp_install.yml
 
 - include: jenkins.yml
 
 - include: esx_builds.yml
 
 - include: apache2.yml
+
+- include: photon.yml

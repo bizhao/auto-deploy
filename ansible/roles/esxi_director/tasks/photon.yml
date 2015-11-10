@@ -1,0 +1,15 @@
+---
+
+- name: create directories to save photon ovf
+  file: path=/builds/photon/ state=directory  owner=root group=root mode=0755
+
+- name: create directories to save ovftool image
+  file: path=/builds/ovftool/ state=directory  owner=root group=root mode=0755
+
+- name: transfer photon ovf
+  copy: src=photon/ dest=/builds/photon/ force=no owner=root group=root mode=0755
+
+- name: transfer ovftool installation bundle
+  copy: src=ovftool/ dest=/builds/ovftool/ owner=root group=root mode=0755
+
+- command: /builds/ovftool/VMware-ovftool-4.1.0-2459827-lin.x86_64.bundle --eulas-agreed --required

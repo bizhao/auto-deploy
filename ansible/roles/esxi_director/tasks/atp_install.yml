@@ -25,6 +25,12 @@
 - name: install tftpd-hpa
   apt: name=tftpd-hpa state=latest
 
+- name: install isc-dhcp-server
+  apt: name=isc-dhcp-server state=latest
+
+- name: disable isc-dhcp-server by default
+  service: name=isc-dhcp-server state=stopped enabled=no
+
 - name: install jenkins
   apt: name=jenkins state=latest
 
